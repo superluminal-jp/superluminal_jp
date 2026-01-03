@@ -45,7 +45,7 @@ export default function RootLayout({
                       Home
                     </a>
                   </li>
-                ep</ul>
+                </ul>
               </div>
             </nav>
           </Sidebar>
