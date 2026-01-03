@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Sidebar } from "@/components/sidebar";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,11 +25,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <Sidebar>
+            <nav className="space-y-4">
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-muted-foreground">
+                  Navigation
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a
+                      href="/"
+                      className="block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                    >
+                      Home
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </Sidebar>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
